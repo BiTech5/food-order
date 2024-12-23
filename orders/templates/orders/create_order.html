@@ -2,4 +2,34 @@
 
 {% block content %}
 <h1>Create Order</h1>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="customerName" class="form-label">Customer Name</label>
+        <input type="text" class="form-control" id="customerName" name="customer_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="customerEmail" class="form-label">Customer Email</label>
+        <input type="email" class="form-control" id="customerEmail" name="customer_email" required>
+    </div>
+    <div class="mb-3">
+        <label for="item" class="form-label">Item</label>
+        <input type="text" class="form-control" id="item" name="item" required>
+    </div>
+    <div class="mb-3">
+        <label for="quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price per Unit (Rs.)</label>
+        <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label for="shippingAddress" class="form-label">Shipping Address</label>
+        <textarea class="form-control" id="shippingAddress" name="shipping_address" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Order</button>
+    <a href="{% url 'list_orders' %}" class="btn btn-secondary">Cancel</a>
+</form>
+
 {% endblock %}
