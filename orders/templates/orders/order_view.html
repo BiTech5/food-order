@@ -30,7 +30,19 @@
             <td>Rs.{{ order.total_price }}</td>
             <td>{{ order.order_date|date:"Y-m-d H:i" }}</td>
             <td>{{ order.shipping_address }}</td>
-            <td>{{ order.status }}</td>
+            {% if order.status == 'pending' %}
+                <td class="table-warning">{{ order.status }}</td>
+            {% elif order.status == 'processing' %}
+                <td class="table-primary">{{ order.status }}</td>
+            {% elif order.status == 'shipped' %}
+                <td class="table-info">{{ order.status }}</td>
+            {% elif order.status == 'delivered' %}
+                <td class="table-success">{{ order.status }}</td>
+            {% elif order.status == 'cancelled' %}
+                <td class="table-danger">{{ order.status }}</td>
+            {% else %}
+                <td>{{ order.status }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
         {% else %}
