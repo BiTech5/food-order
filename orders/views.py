@@ -41,6 +41,6 @@ def create_order(request: HttpRequest) -> HttpResponse:
     return render(request, 'orders/create_order.html')
 
 def update_order(request: HttpRequest) -> HttpResponse:
-    pass
+    return render(request,"orders/update_order.html")
 def delete_order(request: HttpRequest) -> HttpResponse:
     pass
